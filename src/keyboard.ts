@@ -181,3 +181,29 @@ export function space(target: Element, modifiers: string | string[] = []): void 
   spaceKeyDown(target, modifiers);
   spaceKeyUp(target, modifiers);
 }
+
+export function pageUpKeyDown(target: Element, modifiers: string | string[] = []): void {
+  keyDownOn(target, 33, modifiers, 'PageUp');
+}
+
+export function pageUpKeyUp(target: Element, modifiers: string | string[] = []): void {
+  keyUpOn(target, 33, modifiers, 'PageUp');
+}
+
+export function pageUp(target: Element, modifiers: string | string[] = []): void {
+  pageUpKeyDown(target, modifiers);
+  pageUpKeyUp(target, modifiers);
+}
+
+export function pageDownKeyDown(target: Element, modifiers: string | string[] = []): void {
+  keyDownOn(target, 34, modifiers, 'PageDown');
+}
+
+export function pageDownKeyUp(target: Element, modifiers: string | string[] = []): void {
+  keyUpOn(target, 34, modifiers, 'PageDown');
+}
+
+export function pageDown(target: Element, modifiers: string | string[] = []): void {
+  pageDownKeyDown(target, modifiers);
+  pageDownKeyUp(target, modifiers);
+}
