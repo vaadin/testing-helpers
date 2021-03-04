@@ -1,4 +1,4 @@
-import { fixtureCleanup } from './fixture-no-side-effect.js';
+import { fixtureCleanup } from './fixture-wrapper.js';
 
 export { fixtureSync } from './fixture-no-side-effect.js';
 
