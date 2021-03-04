@@ -20,13 +20,13 @@ export function aTimeout(ms: number): Promise<void> {
  * @param {Function} callback Callback to be called in the listener
  * @return {void}
  */
-export const listenOnce = (target: Element, eventName: string, callback: (ev: Event) => void): void => {
+export function listenOnce(target: Element, eventName: string, callback: (ev: Event) => void): void {
   const listener = (event: Event) => {
     target.removeEventListener(eventName, listener);
     callback(event);
   };
   target.addEventListener(eventName, listener);
-};
+}
 
 /**
  * Resolves after requestAnimationFrame.
@@ -46,13 +46,13 @@ export function nextFrame(): Promise<void> {
  *
  * @return {Promise<void>} Promise resolved after next render
  */
-export const nextRender = (target: Node): Promise<void> => {
+export function nextRender(target: Node): Promise<void> {
   return new Promise((resolve) => {
     afterNextRender(target, () => {
       resolve();
     });
   });
-};
+}
 
 /**
  * Listens for one event and resolves with this event object after it was fired.
