@@ -128,7 +128,7 @@ export function makeMouseEvent(type: string, xy: { x: number; y: number }, node:
 }
 
 /**
- * Simulates a mouse move action by firing a `move` mouse event on a
+ * Simulates a mouse move action by firing a `mousemove` mouse event on a
  * specific node, between a set of coordinates.
  *
  * @param {!Element} node The node to fire the event on.
@@ -138,7 +138,7 @@ export function makeMouseEvent(type: string, xy: { x: number; y: number }, node:
  *    If not specified, the default is 5.
  * @return {undefined}
  */
-export function move(
+export function mousemove(
   node: Element,
   fromXY: { x: number; y: number },
   toXY: { x: number; y: number },
@@ -157,7 +157,7 @@ export function move(
 }
 
 /**
- * Fires a `down` mouse event on a specific node, at a given set of coordinates.
+ * Fires a `mousedown` mouse event on a specific node, at a given set of coordinates.
  * This event bubbles and is cancellable. If the (x,y) coordinates are
  * not specified, the middle of the node will be used instead.
  *
@@ -166,13 +166,13 @@ export function move(
  * mouse event should be fired from.
  * @return {undefined}
  */
-export function down(node: Element, xy?: { x: number; y: number }): void {
+export function mousedown(node: Element, xy?: { x: number; y: number }): void {
   xy = xy || middleOfNode(node);
   makeMouseEvent('mousedown', xy, node);
 }
 
 /**
- * Fires an `up` mouse event on a specific node, at a given set of coordinates.
+ * Fires an `mouseup` mouse event on a specific node, at a given set of coordinates.
  * This event bubbles and is cancellable. If the (x,y) coordinates are
  * not specified, the middle of the node will be used instead.
  *
@@ -180,7 +180,7 @@ export function down(node: Element, xy?: { x: number; y: number }): void {
  * @param {{ x: number, y: number }=} xy Optional. The (x,y) coordinates the
  * mouse event should be fired from.
  */
-export function up(node: Element, xy?: { x: number; y: number }): void {
+export function mouseup(node: Element, xy?: { x: number; y: number }): void {
   xy = xy || middleOfNode(node);
   makeMouseEvent('mouseup', xy, node);
 }
@@ -214,10 +214,25 @@ export function track(node: Element, dx: number, dy: number, steps?: number): vo
     }
     touchend(node, { x: xy.x + dx, y: xy.y + dy });
   } else {
-    down(node);
+    mousedown(node);
     const xy = middleOfNode(node);
     const xy2 = { x: xy.x + dx, y: xy.y + dy };
-    move(node, xy, xy2, steps);
-    up(node, xy2);
+    mousemove(node, xy, xy2, steps);
+    mouseup(node, xy2);
   }
 }
+
+/**
+ * @deprecated
+ */
+export const down = mousedown;
+
+/**
+ * @deprecated
+ */
+export const up = mouseup;
+
+/**
+ * @deprecated
+ */
+ export const move = mousemove;
