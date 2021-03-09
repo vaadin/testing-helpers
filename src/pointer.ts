@@ -10,7 +10,7 @@ export const TOUCH_DEVICE = (() => {
 /**
  * Returns the (x,y) coordinates representing the middle of a node.
  */
-function middleOfNode(node: Element): { x: number; y: number } {
+export function middleOfNode(node: Element): { x: number; y: number } {
   const bcr = node.getBoundingClientRect();
   return { y: bcr.top + bcr.height / 2, x: bcr.left + bcr.width / 2 };
 }
@@ -52,7 +52,12 @@ export function makeTouches(xyList: Array<{ x: number; y: number }>, node: Eleme
  * TouchEvent to be dispatched on.
  * @return {undefined}
  */
-export function makeSoloTouchEvent(type: string, coords: { x: number; y: number }, node: Element): void {
+export function makeSoloTouchEvent(
+  type: string,
+  coords: { x: number; y: number },
+  node: Element,
+  shiftKey?: boolean
+): void {
   const xy = coords || middleOfNode(node);
   const touches = makeTouches([xy], node);
   const touchEventInit = {
@@ -81,6 +86,11 @@ export function makeSoloTouchEvent(type: string, coords: { x: number; y: number 
       // @ts-expect-error: emulate TouchEvent
       event[property] = touchEventInit[property];
     });
+  }
+
+  if (shiftKey) {
+    // @ts-expect-error: emulate shiftKey https://www.w3.org/TR/touch-events/#attributes-2
+    event.shiftKey = true;
   }
 
   node.dispatchEvent(event);
@@ -235,4 +245,4 @@ export const up = mouseup;
 /**
  * @deprecated
  */
- export const move = mousemove;
+export const move = mousemove;
