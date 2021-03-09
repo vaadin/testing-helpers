@@ -50,14 +50,14 @@ export function makeTouches(xyList: Array<{ x: number; y: number }>, node: Eleme
  * TouchEvent.
  * @param {!Element} node The target element node for the generated
  * TouchEvent to be dispatched on.
- * @return {undefined}
+ * @return {CustomEvent | TouchEvent}
  */
 export function makeSoloTouchEvent(
   type: string,
   coords: { x: number; y: number },
   node: Element,
   shiftKey?: boolean
-): void {
+): CustomEvent | TouchEvent {
   const xy = coords || middleOfNode(node);
   const touches = makeTouches([xy], node);
   const touchEventInit = {
@@ -89,11 +89,17 @@ export function makeSoloTouchEvent(
   }
 
   if (shiftKey) {
-    // @ts-expect-error: emulate shiftKey https://www.w3.org/TR/touch-events/#attributes-2
-    event.shiftKey = true;
+    // Emulate shiftKey https://www.w3.org/TR/touch-events/#attributes-2
+    Object.defineProperty(event, 'shiftKey', {
+      get() {
+        return true;
+      }
+    });
   }
 
   node.dispatchEvent(event);
+
+  return event;
 }
 
 /**
