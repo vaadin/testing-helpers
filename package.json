@@ -1,6 +1,6 @@
 {
   "name": "@vaadin/testing-helpers",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Common testing helpers for Vaadin components",
   "author": "Vaadin Ltd",
   "license": "Apache-2.0",
