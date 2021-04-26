@@ -32,7 +32,7 @@ export function tap(node: Node): CustomEvent {
  */
 export function focusin(node: Node, relatedTarget?: Node): CustomEvent {
   const eventProps = relatedTarget ? { relatedTarget } : {};
-  return fire(node, 'focusin', eventProps);
+  return fire(node, 'focusin', undefined, eventProps);
 }
 
 /**
@@ -40,5 +40,5 @@ export function focusin(node: Node, relatedTarget?: Node): CustomEvent {
  */
 export function focusout(node: Node, relatedTarget?: Node): CustomEvent {
   const eventProps = relatedTarget ? { relatedTarget } : {};
-  return fire(node, 'focusout', eventProps);
+  return fire(node, 'focusout', undefined, eventProps);
 }
