@@ -127,9 +127,9 @@ export function touchend(node: Element, coords?: { x: number; y: number }): void
  * @param {{ x: number, y: number }} xy The (x,y) coordinates the mouse event
  * should be fired from.
  * @param {!Element} node The node to fire the event on.
- * @return {undefined}
+ * @return {MouseEvent}
  */
-export function makeMouseEvent(type: string, xy: { x: number; y: number }, node: Element): void {
+export function makeMouseEvent(type: string, xy: { x: number; y: number }, node: Element): MouseEvent {
   const props = {
     bubbles: true,
     cancelable: true,
@@ -141,6 +141,7 @@ export function makeMouseEvent(type: string, xy: { x: number; y: number }, node:
   };
   const e = new MouseEvent(type, props);
   node.dispatchEvent(e);
+  return e;
 }
 
 /**
@@ -208,9 +209,9 @@ export function mouseup(node: Element, xy?: { x: number; y: number }): void {
  * @param {{ x: number, y: number }=} xy Optional. The (x,y) coordinates the
  * mouse event should be fired from.
  */
-export function click(node: Element, xy?: { x: number; y: number }): void {
+export function click(node: Element, xy?: { x: number; y: number }): MouseEvent {
   xy = xy || middleOfNode(node);
-  makeMouseEvent('click', xy, node);
+  return makeMouseEvent('click', xy, node);
 }
 
 /**
