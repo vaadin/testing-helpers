@@ -139,8 +139,26 @@ export function homeKeyDown(target: Element, modifiers: string | string[] = []):
   keyDownOn(target, 36, modifiers, 'Home');
 }
 
+export function homeKeyUp(target: Element, modifiers: string | string[] = []): void {
+  keyUpOn(target, 36, modifiers, 'Home');
+}
+
+export function home(target: Element, modifiers: string | string[] = []): void {
+  homeKeyDown(target, modifiers);
+  homeKeyUp(target, modifiers);
+}
+
 export function endKeyDown(target: Element, modifiers: string | string[] = []): void {
   keyDownOn(target, 35, modifiers, 'End');
+}
+
+export function endKeyUp(target: Element, modifiers: string | string[] = []): void {
+  keyUpOn(target, 35, modifiers, 'End');
+}
+
+export function end(target: Element, modifiers: string | string[] = []): void {
+  endKeyDown(target, modifiers);
+  endKeyUp(target, modifiers);
 }
 
 export function enterKeyDown(target: Element, modifiers: string | string[] = []): void {
