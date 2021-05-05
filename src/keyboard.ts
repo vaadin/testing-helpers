@@ -70,6 +70,10 @@ export function keyUpOn(target: Element, keyCode: number, modifiers: string | st
   keyEventOn(target, 'keyup', keyCode, modifiers, key);
 }
 
+export function keyDownChar(target: Element, letter: string, modifiers: string | string[] = []): void {
+  keyDownOn(target, letter.charCodeAt(0), modifiers, letter);
+}
+
 export function tabKeyDown(target: Element, modifiers: string | string[] = []): void {
   keyDownOn(target, 9, modifiers, 'Tab');
 }
