@@ -202,6 +202,32 @@ export function mouseup(node: Element, xy?: { x: number; y: number }): void {
 }
 
 /**
+ * Fires a `click` event on a given node, optionally at a given set of coordinates.
+ *
+ * @param {!Element} node The node to fire the event on.
+ * @param {{ x: number, y: number }=} xy Optional. The (x,y) coordinates the
+ * mouse event should be fired from.
+ */
+export function click(node: Element, xy?: { x: number; y: number }): void {
+  xy = xy || middleOfNode(node);
+  makeMouseEvent('click', xy, node);
+}
+
+/**
+ * Fires a 'tap' mouse event on a specific node, optionally at a given set of coordinates.
+ *
+ * @param {!Element} node The node to fire the event on.
+ * @param {{ x: number, y: number }=} xy Optional. The (x,y) coordinates the
+ * mouse event should be fired from.
+ */
+export function tap(node: Element, xy?: { x: number; y: number }): void {
+  xy = xy || middleOfNode(node);
+  mousedown(node, xy);
+  mouseup(node, xy);
+  click(node, xy);
+}
+
+/**
  * Simulates a mouse or touch ragging action originating in the middle of a specific
  * node.
  *

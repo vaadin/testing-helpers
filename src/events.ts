@@ -14,20 +14,6 @@ export function fire(
 }
 
 /**
- * Dispatches a click event on the given node.
- */
-export function click(node: Node): CustomEvent {
-  return fire(node, 'click');
-}
-
-/**
- * Dispatches a tap event on the given node.
- */
-export function tap(node: Node): CustomEvent {
-  return fire(node, 'tap');
-}
-
-/**
  * Dispatches a focusin event on the given node.
  */
 export function focusin(node: Node, relatedTarget?: Node): CustomEvent {
