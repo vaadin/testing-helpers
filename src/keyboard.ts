@@ -157,11 +157,11 @@ export function enter(target: Element, modifiers: string | string[] = []): void 
 }
 
 export function escKeyDown(target: Element, modifiers: string | string[] = []): void {
-  keyDownOn(target, 27, modifiers, 'Esc');
+  keyDownOn(target, 27, modifiers, 'Escape');
 }
 
 export function escKeyUp(target: Element, modifiers: string | string[] = []): void {
-  keyUpOn(target, 27, modifiers, 'Esc');
+  keyUpOn(target, 27, modifiers, 'Escape');
 }
 
 export function esc(target: Element, modifiers: string | string[] = []): void {
