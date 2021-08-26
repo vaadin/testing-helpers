@@ -1,3 +1,4 @@
+import './register-chai-plugins.js';
 export * from './browser.js';
 export * from './events.js';
 export * from './fixture.js';
