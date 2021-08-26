@@ -5,10 +5,11 @@ export function fire(
   node: Node,
   eventType: string,
   detail?: Record<string, unknown>,
-  eventProps?: Record<string, unknown>
+  eventProps: EventInit & Record<string, unknown> = { bubbles: true, composed: true, cancelable: true }
 ): CustomEvent {
-  const evt = new CustomEvent(eventType, { bubbles: true, composed: true, cancelable: true, detail: detail });
-  Object.assign(evt, eventProps);
+  const { bubbles = true, composed = true, cancelable = true, ...props } = eventProps;
+  const evt = new CustomEvent(eventType, { bubbles, composed, cancelable, detail: detail });
+  Object.assign(evt, props);
   node.dispatchEvent(evt);
   return evt;
 }
