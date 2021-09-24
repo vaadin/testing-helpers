@@ -1,5 +1,21 @@
 import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
 
+let defineCECounter = 0;
+
+type Constructor<T> = new (...args: any[]) => T; // eslint-disable-line @typescript-eslint/no-explicit-any
+
+/**
+ * Registers a new element with an automatically generated unique name.
+ * @param {Constructor<T>} klass Class which extends HTMLElement
+ * @return {string} Tag name of the registered element
+ */
+export function defineCE(klass: Constructor<HTMLElement>): string {
+  const tag = `test-${defineCECounter}`;
+  customElements.define(tag, klass);
+  defineCECounter += 1;
+  return tag;
+}
+
 /**
  * Resolves after provided amount of milliseconds.
  *
