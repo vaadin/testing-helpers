@@ -22,7 +22,7 @@ export function defineCE(klass: Constructor<HTMLElement>): string {
  * @param {number} ms Milliseconds.
  * @return {Promise<void>} Promise to await until time is up
  */
-export function aTimeout(ms: number): Promise<void> {
+export async function aTimeout(ms: number): Promise<void> {
   return new Promise((resolve) => {
     setTimeout(resolve, ms);
   });
@@ -49,7 +49,7 @@ export function listenOnce(target: Element, eventName: string, callback: (ev: Ev
  *
  * @return {Promise<void>} Promise resolved after requestAnimationFrame
  */
-export function nextFrame(): Promise<void> {
+export async function nextFrame(): Promise<void> {
   return new Promise((resolve) => {
     requestAnimationFrame(() => {
       resolve();
@@ -62,7 +62,7 @@ export function nextFrame(): Promise<void> {
  *
  * @return {Promise<void>} Promise resolved after next render
  */
-export function nextRender(target: Node): Promise<void> {
+export async function nextRender(target: Node): Promise<void> {
   return new Promise((resolve) => {
     afterNextRender(target, () => {
       resolve();
@@ -77,7 +77,7 @@ export function nextRender(target: Node): Promise<void> {
  * @param {string} eventName Name of the event
  * @return {Promise<CustomEvent>} Promise to await until the event has been fired
  */
-export function oneEvent(target: Element, eventName: string): Promise<CustomEvent> {
+export async function oneEvent(target: Element, eventName: string): Promise<CustomEvent> {
   return new Promise((resolve) => {
     listenOnce(target, eventName, (event) => {
       resolve(event as CustomEvent);

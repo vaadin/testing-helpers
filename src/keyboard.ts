@@ -23,16 +23,16 @@ export function keyboardEventFor(
   const modifierKeys = typeof modifiers === 'string' ? [modifiers] : modifiers;
 
   // @ts-expect-error: emulate KeyboardEvent
-  event.shiftKey = modifierKeys.indexOf('shift') !== -1;
+  event.shiftKey = modifierKeys.includes('shift');
 
   // @ts-expect-error: emulate KeyboardEvent
-  event.altKey = modifierKeys.indexOf('alt') !== -1;
+  event.altKey = modifierKeys.includes('alt');
 
   // @ts-expect-error: emulate KeyboardEvent
-  event.ctrlKey = modifierKeys.indexOf('ctrl') !== -1;
+  event.ctrlKey = modifierKeys.includes('ctrl');
 
   // @ts-expect-error: emulate KeyboardEvent
-  event.metaKey = modifierKeys.indexOf('meta') !== -1;
+  event.metaKey = modifierKeys.includes('meta');
 
   // @ts-expect-error: emulate KeyboardEvent
   event.key = key;

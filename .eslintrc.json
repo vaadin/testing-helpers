@@ -1,17 +1,31 @@
 {
   "extends": [
-    "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended"
+    "vaadin/typescript",
+    "vaadin/prettier"
   ],
+  "env": {
+    "browser": true,
+    "mocha": true
+  },
   "parserOptions": {
     "sourceType": "module",
     "ecmaVersion": 2020,
     "project": "./tsconfig.json"
   },
   "rules": {
-    "@typescript-eslint/ban-ts-comment": [
-      "error",
-      { "ts-expect-error": "allow-with-description" }
-    ]
+    "@typescript-eslint/no-unsafe-call": "off",
+    "@typescript-eslint/prefer-for-of": "off",
+    "@typescript-eslint/prefer-nullish-coalescing": "off",
+    "@typescript-eslint/sort-type-constituents": "off",
+    "@typescript-eslint/sort-type-union-intersection-members": "off",
+    "logical-assignment-operators": "off",
+    "max-params": ["error", 5],
+    "no-bitwise": "off",
+    "no-new": "off",
+    "no-param-reassign": "off",
+    "operator-assignment": "off",
+    "prefer-destructuring": "off",
+    "require-unicode-regexp": "off",
+    "sort-keys": "off"
   }
 }

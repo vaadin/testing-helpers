@@ -25,7 +25,7 @@ export function middleOfNode(node: Element): { x: number; y: number } {
  * @param {!Element} node A target element node.
  * @return {!Array<!Touch>}
  */
-export function makeTouches(xyList: Array<{ x: number; y: number }>, node: Element): Array<Touch> {
+export function makeTouches(xyList: Array<{ x: number; y: number }>, node: Element): Touch[] {
   let id = 0;
 
   return xyList.map((xy) => {
@@ -54,7 +54,7 @@ export function makeTouches(xyList: Array<{ x: number; y: number }>, node: Eleme
  */
 export function makeSoloTouchEvent(
   type: string,
-  coords: { x: number; y: number },
+  coords: { x: number; y: number } | undefined,
   node: Element,
   shiftKey?: boolean
 ): CustomEvent | TouchEvent {

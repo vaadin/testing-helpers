@@ -1,6 +1,6 @@
 import { fixtureWrapper } from './fixture-wrapper.js';
 
-const templates: Record<string, HTMLTemplateElement> = {};
+const templates: Record<string, HTMLTemplateElement | undefined> = {};
 
 /**
  * Creates a `<template>` element from a provided string template.

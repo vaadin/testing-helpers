@@ -8,7 +8,7 @@ export function fire(
   eventProps: EventInit & Record<string, unknown> = { bubbles: true, composed: true, cancelable: true }
 ): CustomEvent {
   const { bubbles = true, composed = true, cancelable = true, ...props } = eventProps;
-  const evt = new CustomEvent(eventType, { bubbles, composed, cancelable, detail: detail });
+  const evt = new CustomEvent(eventType, { bubbles, composed, cancelable, detail });
   Object.assign(evt, props);
   node.dispatchEvent(evt);
   return evt;
