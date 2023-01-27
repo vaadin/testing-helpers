@@ -18,6 +18,7 @@
     "@typescript-eslint/prefer-nullish-coalescing": "off",
     "@typescript-eslint/sort-type-constituents": "off",
     "@typescript-eslint/sort-type-union-intersection-members": "off",
+    "class-methods-use-this": "off",
     "logical-assignment-operators": "off",
     "max-params": ["error", 5],
     "no-bitwise": "off",

@@ -17,7 +17,8 @@
   "dependencies": {
     "@esm-bundle/chai": "^4.3.1",
     "@open-wc/semantic-dom-diff": "^0.19.7",
-    "@polymer/polymer": "^3.5.1"
+    "@polymer/polymer": "^3.5.1",
+    "lit": "^2.6.1"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.48.2",
