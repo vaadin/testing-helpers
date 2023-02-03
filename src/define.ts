@@ -1,10 +1,9 @@
 import { PolymerElement } from '@polymer/polymer/polymer-element.js';
 import { html, LitElement } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
+import type { Constructor } from './utils.js';
 
-declare type Constructor<T> = new (...args: any[]) => T;
-
-declare type ClassFactory = <T extends Constructor<HTMLElement>>(base: T) => T;
+declare type ClassFactory = <T extends Constructor<HTMLElement>>(_base: T) => T;
 
 export const definePolymer = (prefix: string, htmlString: string, classFactory: ClassFactory): string => {
   const tag = `${prefix}-polymer-element`;

@@ -2,7 +2,7 @@ export const TOUCH_DEVICE = (() => {
   try {
     new Touch({ identifier: 1, target: window });
     return true;
-  } catch (e) {
+  } catch (_) {
     return false;
   }
 })();

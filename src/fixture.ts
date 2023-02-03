@@ -13,6 +13,6 @@ try {
       fixtureCleanup();
     });
   }
-} catch (error) {
+} catch (_) {
   /* do nothing */
 }

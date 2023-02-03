@@ -2,7 +2,7 @@ import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
 
 let defineCECounter = 0;
 
-type Constructor<T> = new (...args: any[]) => T; // eslint-disable-line @typescript-eslint/no-explicit-any
+export type Constructor<T> = new (..._args: any[]) => T; // eslint-disable-line @typescript-eslint/no-explicit-any
 
 /**
  * Registers a new element with an automatically generated unique name.
@@ -36,7 +36,7 @@ export async function aTimeout(ms: number): Promise<void> {
  * @param {Function} callback Callback to be called in the listener
  * @return {void}
  */
-export function listenOnce(target: Element, eventName: string, callback: (ev: Event) => void): void {
+export function listenOnce(target: Element, eventName: string, callback: (_ev: Event) => void): void {
   const listener = (event: Event) => {
     target.removeEventListener(eventName, listener);
     callback(event);
