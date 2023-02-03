@@ -1,6 +1,7 @@
 {
   "extends": [
     "vaadin/typescript",
+    "vaadin/typescript-requiring-type-checking",
     "vaadin/prettier"
   ],
   "env": {
