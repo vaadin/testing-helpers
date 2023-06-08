@@ -229,6 +229,20 @@ export function tap(node: Element, xy?: { x: number; y: number }): void {
 }
 
 /**
+ * Emulates clicking outside the currently focused element.
+ */
+export function outsideClick(): void {
+  // Move focus to body
+  document.body.tabIndex = 0;
+  // Mimic the mouse event
+  mousedown(document.body);
+  document.body.focus();
+  document.body.tabIndex = -1;
+  // Outside click
+  document.body.click();
+}
+
+/**
  * Simulates a mouse or touch ragging action originating in the middle of a specific
  * node.
  *
