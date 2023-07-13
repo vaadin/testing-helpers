@@ -84,3 +84,22 @@ export async function oneEvent(target: Element, eventName: string): Promise<Cust
     });
   });
 }
+
+const isDefinedPromise = (action: unknown) => typeof action === 'object' && Promise.resolve(action) === action;
+
+/**
+ * Awaits for "update complete" of the Lit based element,
+ * or for one frame via `await nextFrame()` otherwise.
+ *
+ * @param {HTMLElement} el
+ * @return {Promise<HTMLElement>}
+ */
+export async function nextUpdate(el?: HTMLElement): Promise<void> {
+  // @ts-expect-error Incorrect type
+  const update = el?.updateComplete;
+  if (isDefinedPromise(update)) {
+    await update;
+  } else {
+    await nextFrame();
+  }
+}
