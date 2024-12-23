@@ -76,14 +76,13 @@ export async function nextRender(target: Node): Promise<void> {
  * @param {Element} target Element to observe for resize events
  * @return {Promise<void>} Promise resolved after the resize event
  */
-export const nextResize = (target: Element): Promise<void> => {
-  return new Promise((resolve) => {
+export const nextResize = async (target: Element): Promise<void> =>
+  new Promise((resolve) => {
     new ResizeObserver((_, observer) => {
       observer.disconnect();
       setTimeout(resolve);
     }).observe(target);
   });
-};
 
 /**
  * Listens for one event and resolves with this event object after it was fired.
