@@ -1,5 +1,3 @@
-import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
-
 let defineCECounter = 0;
 
 export type Constructor<T> = new (..._args: any[]) => T; // eslint-disable-line @typescript-eslint/no-explicit-any
@@ -58,14 +56,15 @@ export async function nextFrame(): Promise<void> {
 }
 
 /**
- * Resolves after afterNextRender Polymer hook.
+ * Resolves after the next render, by runing after one task (`setTimout`)
+ * after the next `requestAnimationFrame`
  *
  * @return {Promise<void>} Promise resolved after next render
  */
-export async function nextRender(target: Node): Promise<void> {
+export async function nextRender(): Promise<void> {
   return new Promise((resolve) => {
-    afterNextRender(target, () => {
-      resolve();
+    requestAnimationFrame(() => {
+      setTimeout(() => resolve());
     });
   });
 }
